@@ -1,7 +1,7 @@
 {
   "name": "mongoose-listento",
   "description": "Tell a schema to listen to events from other models.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": {
     "name": "Victor Kareh",
     "email": "victor@seelio.com"
