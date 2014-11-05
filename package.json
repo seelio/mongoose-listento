@@ -1,0 +1,28 @@
+{
+  "name": "mongoose-listento",
+  "description": "Tell a schema to listen to events from other models.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Victor Kareh",
+    "email": "victor@seelio.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seelio/mongoose-listento"
+  },
+  "main": "./index.js",
+  "dependencies": {
+    "mongoose": "~3.8.18",
+    "underscore": "~1.7.0"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "istanbul": "~0.3.0",
+    "mocha": "~1.21.4"
+  },
+  "scripts": {
+    "test": "mocha -R spec",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha"
+  }
+}
