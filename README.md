@@ -29,6 +29,10 @@ This plugin provides the following schema methods:
 * `listenToOnce`: Inversion-of-control version of `once`. Tell *this* schema to listen once to an event in another model.
 * `stopListening`: Tell this schema to stop listening to either specific events or to every object it's currently listening to.
 
+You can pass either the `Model` object, or the `"Model"` name to the methods
+above and the plugin will automatically use the correct model. This allows for
+more flexible decoupling of models within your code.
+
 You can emit any custom event from within the schema (or from the model itself
 by calling `MyModel.schema.emit( ... )`). By default, this plugin emits the
 following events:
