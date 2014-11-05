@@ -94,6 +94,16 @@ describe('Mongoose ListenTo plugin', function() {
     university.save(done);
   });
 
+  it('should listen to custom events', function(done) {
+    StudentSchema.listenTo('University', 'foobar', function(u, foo) {
+      expect(this).to.equal(Student);
+      expect(u).to.be.an.instanceof(University);
+      expect(foo).to.equal('bar');
+      done();
+    });
+    UniversitySchema.emit('foobar', university, 'bar');
+  });
+
   it('should delete a model and trigger a `remove` event', function(done) {
     StudentSchema.listenToOnce('University', 'remove', function(u) {
       expect(this).to.equal(Student);
