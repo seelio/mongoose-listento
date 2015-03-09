@@ -30,6 +30,20 @@ describe('Mongoose ListenTo plugin', function() {
     University = mongoose.model('University', UniversitySchema);
   });
 
+  it('should wait for a model to instantiate before binding listener', function(done) {
+    UniversitySchema.listenToOnce('Later', 'add', function(l) {
+      expect(this).to.equal(University);
+      expect(l).to.be.an.instanceof(Later);
+      done();
+    });
+    var LaterSchema = mongoose.Schema({});
+    LaterSchema.plugin(listento);
+    var Later = mongoose.model('Later', LaterSchema);
+    process.nextTick(function() {
+      (new Later()).save();
+    });
+  });
+
   it('should create a new model and trigger an `add` event', function(done) {
     StudentSchema.listenToOnce('University', 'add', function(u) {
       expect(this).to.equal(Student);
